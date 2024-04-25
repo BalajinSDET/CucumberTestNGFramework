@@ -1,0 +1,2 @@
+file:src/test/resources/Features/TC002_Search%20and%20Apply%20a%20Job.feature:28
+file:src/test/resources/Features/TC001_Post%20a%20Job.feature:26

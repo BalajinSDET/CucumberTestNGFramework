@@ -12,6 +12,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -44,7 +47,7 @@ public class Selenium_Base_Hooks {
         return driver.get();
     }
 
-    public void launchApp(String browserName) {
+    public static void launchApp(String browserName) {
         // String browserName = prop.getProperty("browser");
         if (browserName.equalsIgnoreCase("Chrome")) {
             WebDriverManager.chromedriver().setup();
@@ -72,18 +75,8 @@ public class Selenium_Base_Hooks {
     }
 
 
-    //  @Parameters("browser")
-    @Before
-    public void setup(String browser) {
-        launchApp(browser);
-    }
 
-    @After
-    public void tearDown(Scenario scenario) {
-        getDriver().quit();
-    }
 
-    @AfterStep
     public void addScreenshot(Scenario scenario) {
         if (scenario.isFailed()) {
             TakesScreenshot ts = (TakesScreenshot) getDriver();

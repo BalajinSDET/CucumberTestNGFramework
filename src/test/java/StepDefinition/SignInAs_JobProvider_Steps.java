@@ -1,29 +1,39 @@
 package StepDefinition;
 
+import PageObjects.Index_Page;
+import PageObjects.JobProvider_SignIn_Page;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class SignInAs_JobProvider_Steps {
+
+    Index_Page IP = new Index_Page();
+    JobProvider_SignIn_Page JPSIP = new JobProvider_SignIn_Page();
     @Given("User is enter the Ihp website URL")
     public void userIsEnterTheIhpWebsiteURL() {
     }
 
     @When("The user should able to click on the Login as Job provider button in the HomePage")
     public void theUserShouldAbleToClickOnTheLoginAsJobProviderButtonInTheHomePage() {
+        IP.ClickLoginAsJobProvider();
     }
 
     @Then("User should navigated to the sign in page")
-    public void userShouldNavigatedToTheSignInPage() {
+    public void userShouldNavigatedToTheSignInPage() throws InterruptedException {
+        JPSIP.VerifySignInHeading();
     }
 
     @And("The user enter their Email Id as {string} and Password as {string}")
-    public void theUserEnterTheirEmailIdAsAndPasswordAs(String arg0, String arg1) {
+    public void theUserEnterTheirEmailIdAsAndPasswordAs(String email, String password) {
+        JPSIP.EnterEmail(email);
+        JPSIP.EnterPassword(password);
     }
 
     @When("User clicks on the sign in button")
     public void userClicksOnTheSignInButton() {
+        JPSIP.ClickSignInBtn();
     }
 
     @And("User should navigated to the KYC Verification")
